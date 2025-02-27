@@ -26,10 +26,10 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: YoussefM/docker-project:latest
+        tags: YoussefM/docker-project:${{ github.ref_name }},YoussefM/docker-project:latest
 
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@v1
+    - name: Login to GitHub Container Registry (GHCR)
+      uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
@@ -39,4 +39,4 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: ghcr.io/your-github-username/docker-project:latest
+        tags: ghcr.io/YoussefM/docker-project:${{ github.ref_name }},ghcr.io/YoussefM/docker-project:latest
