@@ -1,14 +1,14 @@
 # Use a base image
-FROM alpine:latest
-
-# Install necessary packages
-RUN apk add --no-cache bash
+FROM python:3.9
 
 # Set the working directory
 WORKDIR /app
 
 # Copy files into the container
-COPY . .
+COPY . /app
+
+# Install dependencies
+RUN pip install -r requirements.txt
 
 # Set the default command
-CMD ["bash"]
+CMD ["python", "app.py"]
